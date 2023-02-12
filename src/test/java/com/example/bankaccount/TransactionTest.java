@@ -11,7 +11,7 @@ public class TransactionTest {
 
     @Before
     public void before(){
-        transaction = new Transaction("12/02/2023", 14.00);
+        transaction = new Transaction("12/02/2023", 14.00, Type.INCOMING);
     }
     @Test
     public void TransactionHasDate(){
@@ -21,5 +21,10 @@ public class TransactionTest {
     @Test
     public void TransactionHasTime(){
         assertEquals(14.00, transaction.getTime(), 0.0);
+    }
+
+    @Test
+    public void TransationHasType(){
+        assertEquals(Type.INCOMING, transaction.getType());
     }
 }
