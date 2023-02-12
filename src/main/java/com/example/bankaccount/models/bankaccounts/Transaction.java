@@ -18,10 +18,14 @@ public class Transaction {
 
     Type type;
 
-    public Transaction(String date, Double time, Type type) {
+    @Column
+    private String recipient;
+
+    public Transaction(String date, Double time, Type type, String recipient) {
         this.date = date;
         this.time = time;
         this.type = type;
+        this.recipient = recipient;
     }
 
     public Long getId() {
@@ -54,5 +58,13 @@ public class Transaction {
 
     public void setType(Type type) {
         this.type = type;
+    }
+
+    public String getRecipient() {
+        return recipient;
+    }
+
+    public void setRecipient(String recipient) {
+        this.recipient = recipient;
     }
 }

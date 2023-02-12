@@ -12,7 +12,7 @@ public class TransactionTest {
 
     @Before
     public void before(){
-        transaction = new Transaction("12/02/2023", 14.00, Type.INCOMING, "Calanthe");
+        transaction = new Transaction("12/02/2023", 14.00, Type.INCOMING, "Calanthe", 50.0);
     }
     @Test
     public void TransactionHasDate(){
@@ -32,5 +32,10 @@ public class TransactionTest {
     @Test
     public void TransactionHasRecipient(){
         assertEquals("Calanthe", transaction.getRecipient());
+    }
+
+    @Test
+    public void TransactionHasAmount(){
+        assertEquals(50.0, transaction.getAmount(), 0.0);
     }
 }
