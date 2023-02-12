@@ -12,8 +12,12 @@ public class Transaction {
     @Column
     private String date;
 
-    public Transaction(String date) {
+    @Column
+    private Double time;
+
+    public Transaction(String date, Double time) {
         this.date = date;
+        this.time = time;
     }
 
     public Long getId() {
@@ -30,5 +34,13 @@ public class Transaction {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public Double getTime() {
+        return time;
+    }
+
+    public void setTime(Double time) {
+        this.time = time;
     }
 }

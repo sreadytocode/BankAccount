@@ -20,6 +20,6 @@ public class TransactionTest {
 
     @Test
     public void TransactionHasTime(){
-        assertEquals(14.00, transaction.getTime());
+        assertEquals(14.00, transaction.getTime(), 0.0);
     }
 }
