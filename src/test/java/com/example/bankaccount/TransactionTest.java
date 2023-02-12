@@ -1,6 +1,5 @@
 package com.example.bankaccount;
 
-import jakarta.transaction.Transaction;
 import org.junit.Before;
 import org.junit.Test;
 
