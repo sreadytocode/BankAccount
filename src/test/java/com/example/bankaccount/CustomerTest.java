@@ -1,6 +1,7 @@
 package com.example.bankaccount;
 
 import com.example.bankaccount.models.allenums.Title;
+import com.example.bankaccount.models.bankaccounts.BankAccount;
 import com.example.bankaccount.models.customer.Customer;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,6 +10,8 @@ import static org.junit.Assert.assertEquals;
 
 public class CustomerTest {
     Customer customer;
+
+    BankAccount bankAccount;
 
     @Before
     public void before(){

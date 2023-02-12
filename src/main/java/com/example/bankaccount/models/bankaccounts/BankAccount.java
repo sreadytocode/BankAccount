@@ -1,5 +1,6 @@
 package com.example.bankaccount.models.bankaccounts;
 
+import com.example.bankaccount.models.allenums.Card;
 import jakarta.persistence.*;
 
 @Entity
@@ -16,10 +17,13 @@ public class BankAccount {
     @Column
     private String sortCode;
 
+    Card card;
 
-    public BankAccount(Integer accountNumber, String sortCode) {
+
+    public BankAccount(Integer accountNumber, String sortCode, Card card) {
         this.accountNumber = accountNumber;
         this.sortCode = sortCode;
+        this.card = card;
     }
 
     public BankAccount() {}
@@ -46,5 +50,13 @@ public class BankAccount {
 
     public void setSortCode(String sortCode) {
         this.sortCode = sortCode;
+    }
+
+    public Card getCard() {
+        return card;
+    }
+
+    public void setCard(Card card) {
+        this.card = card;
     }
 }
