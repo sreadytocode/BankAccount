@@ -12,7 +12,7 @@ public class CustomerTest {
 
     @Before
     public void before(){
-        customer = new Customer(Title.MR, "Geralt", "Rivia", 36, "Kaer Morhen");
+        customer = new Customer(Title.MR, "Geralt", "Rivia", 36, "Kaer Morhen", 100.00);
     }
     @Test
     public void CustomerHasTitle(){
@@ -37,6 +37,11 @@ public class CustomerTest {
     @Test
     public void CustomerHasAddress(){
         assertEquals("Kaer Morhen", customer.getAddress());
+    }
+
+    @Test
+    public void CustomerHasMonthlyWage(){
+        assertEquals(100.0, customer.getMonthlyWage(), 0.0);
     }
 
 }
