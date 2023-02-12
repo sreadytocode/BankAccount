@@ -11,11 +11,11 @@ public class BankAccountTest {
 
     @Before
     public void before(){
-        bankAccount = new BankAccount(008428);
+        bankAccount = new BankAccount(639268);
     }
 
     @Test
     public void BankAccountHasAccountNumber(){
-        assertEquals(008428, bankAccount.getAccountNumber());
+        assertEquals(639268, bankAccount.getAccountNumber(), 0.0);
     }
 }
