@@ -11,10 +11,15 @@ public class TransactionTest {
 
     @Before
     public void before(){
-        transaction = new Transaction("12/02/2023");
+        transaction = new Transaction("12/02/2023", 14.00);
     }
     @Test
     public void TransactionHasDate(){
         assertEquals("12/02/2023", transaction.getDate());
+    }
+
+    @Test
+    public void TransactionHasTime(){
+        assertEquals(14.00, transaction.getTime());
     }
 }
