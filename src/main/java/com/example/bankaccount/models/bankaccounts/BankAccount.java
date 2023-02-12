@@ -13,8 +13,13 @@ public class BankAccount {
     @Column
     private Integer accountNumber;
 
-    public BankAccount(Integer accountNumber) {
+    @Column
+    private String sortCode;
+
+
+    public BankAccount(Integer accountNumber, String sortCode) {
         this.accountNumber = accountNumber;
+        this.sortCode = sortCode;
     }
 
     public BankAccount() {}
@@ -33,5 +38,13 @@ public class BankAccount {
 
     public void setAccountNumber(Integer accountNumber) {
         accountNumber = accountNumber;
+    }
+
+    public String getSortCode() {
+        return sortCode;
+    }
+
+    public void setSortCode(String sortCode) {
+        this.sortCode = sortCode;
     }
 }
