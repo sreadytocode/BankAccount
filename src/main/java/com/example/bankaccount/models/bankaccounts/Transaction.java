@@ -21,11 +21,15 @@ public class Transaction {
     @Column
     private String recipient;
 
-    public Transaction(String date, Double time, Type type, String recipient) {
+    @Column
+    private Double amount;
+
+    public Transaction(String date, Double time, Type type, String recipient, Double amount) {
         this.date = date;
         this.time = time;
         this.type = type;
         this.recipient = recipient;
+        this.amount = amount;
     }
 
     public Long getId() {
@@ -66,5 +70,13 @@ public class Transaction {
 
     public void setRecipient(String recipient) {
         this.recipient = recipient;
+    }
+
+    public Double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Double amount) {
+        this.amount = amount;
     }
 }
