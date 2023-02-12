@@ -11,11 +11,18 @@ public class BankAccountTest {
 
     @Before
     public void before(){
-        bankAccount = new BankAccount(639268);
+        bankAccount = new BankAccount(639268, "11-23-54");
     }
 
     @Test
     public void BankAccountHasAccountNumber(){
         assertEquals(639268, bankAccount.getAccountNumber(), 0.0);
     }
+
+    @Test
+    public void BankAccountHasSortCode(){
+        assertEquals("11-23-54", bankAccount.getSortCode());
+    }
+
+
 }
