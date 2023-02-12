@@ -19,11 +19,15 @@ public class BankAccount {
 
     Card card;
 
+    @Column
+    private Double cash;
 
-    public BankAccount(Integer accountNumber, String sortCode, Card card) {
+
+    public BankAccount(Integer accountNumber, String sortCode, Card card, Double cash) {
         this.accountNumber = accountNumber;
         this.sortCode = sortCode;
         this.card = card;
+        this.cash = cash;
     }
 
     public BankAccount() {}
@@ -58,5 +62,13 @@ public class BankAccount {
 
     public void setCard(Card card) {
         this.card = card;
+    }
+
+    public Double getCash() {
+        return cash;
+    }
+
+    public void setCash(Double cash) {
+        this.cash = cash;
     }
 }
