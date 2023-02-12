@@ -1,5 +1,6 @@
 package com.example.bankaccount;
 
+import com.example.bankaccount.models.allenums.Type;
 import com.example.bankaccount.models.bankaccounts.Transaction;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +25,7 @@ public class TransactionTest {
     }
 
     @Test
-    public void TransationHasType(){
+    public void TransactionHasType(){
         assertEquals(Type.INCOMING, transaction.getType());
     }
 }

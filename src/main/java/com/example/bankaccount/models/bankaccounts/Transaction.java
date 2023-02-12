@@ -1,5 +1,6 @@
 package com.example.bankaccount.models.bankaccounts;
 
+import com.example.bankaccount.models.allenums.Type;
 import jakarta.persistence.*;
 
 @Entity
@@ -15,9 +16,12 @@ public class Transaction {
     @Column
     private Double time;
 
-    public Transaction(String date, Double time) {
+    Type type;
+
+    public Transaction(String date, Double time, Type type) {
         this.date = date;
         this.time = time;
+        this.type = type;
     }
 
     public Long getId() {
@@ -42,5 +46,13 @@ public class Transaction {
 
     public void setTime(Double time) {
         this.time = time;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
     }
 }
