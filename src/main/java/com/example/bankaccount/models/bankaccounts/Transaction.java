@@ -24,12 +24,16 @@ public class Transaction {
     @Column
     private Double amount;
 
-    public Transaction(String date, Double time, Type type, String recipient, Double amount) {
+    @Column
+    private String reference;
+
+    public Transaction(String date, Double time, Type type, String recipient, Double amount, String reference) {
         this.date = date;
         this.time = time;
         this.type = type;
         this.recipient = recipient;
         this.amount = amount;
+        this.reference = reference;
     }
 
     public Long getId() {
@@ -78,5 +82,13 @@ public class Transaction {
 
     public void setAmount(Double amount) {
         this.amount = amount;
+    }
+
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
     }
 }
