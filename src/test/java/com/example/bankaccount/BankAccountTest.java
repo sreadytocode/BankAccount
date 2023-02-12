@@ -12,7 +12,7 @@ public class BankAccountTest {
 
     @Before
     public void before(){
-        bankAccount = new BankAccount(639268, "11-23-54", Card.VISA);
+        bankAccount = new BankAccount(639268, "11-23-54", Card.VISA, 1000.0);
     }
 
     @Test
@@ -28,6 +28,11 @@ public class BankAccountTest {
     @Test
     public void BankAccountHasCard(){
         assertEquals(Card.VISA, bankAccount.getCard());
+    }
+
+    @Test
+    public void BankAccountHasCash(){
+        assertEquals(1000.00, bankAccount.getCash(), 0.0);
     }
 
 
