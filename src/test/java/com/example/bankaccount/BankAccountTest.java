@@ -26,8 +26,6 @@ public class BankAccountTest {
 
         Transaction calantheTransaction = new Transaction("12/02/2023", 14.00, Type.INCOMING, "Calanthe", 50.0, "TOKEEPTHEPEACE", bankAccount);
         Transaction baronTransaction = new Transaction("05/10/2023", 10.00, Type.INCOMING, "Bloody Baron", 50.0, "FAMILYMATTERS", bankAccount);
-//        transactions.add(transaction);
-//        transactions.add(transaction1);
         List<Transaction> transactions = Arrays.asList(calantheTransaction, baronTransaction);
 
         bankAccount = new BankAccount(customer, 639268, "11-23-54", Card.VISA, 1000.0, transactions);
