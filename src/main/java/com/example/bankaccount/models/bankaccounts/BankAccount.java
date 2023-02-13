@@ -8,8 +8,12 @@ import com.example.bankaccount.models.customer.Customer;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+import java.time.chrono.ChronoLocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "bank")
@@ -125,5 +129,22 @@ public class BankAccount implements IPay, IReceive {
             total = this.cash += transaction.getAmount();
         }
         return total;
+    }
+
+    public Transaction findTransactionByDate(String dateToFind){
+        return transactions
+                .stream()
+                .filter(toFind -> toFind.getDate().equals(dateToFind))
+                .findAny()
+                .orElse(null);
+    }
+
+    public List<String> findTransactionsByDateRange(LocalDate start, LocalDate end){
+        return transactions
+                .stream()
+                .map(date -> LocalDate.parse(date.getDate(), DateTimeFormatter.ISO_LOCAL_DATE))
+                .filter(date -> date.isAfter(start) && date.isBefore(end))
+                .map(date -> date.format(DateTimeFormatter.ISO_LOCAL_DATE))
+                .collect(Collectors.toList());
     }
 }

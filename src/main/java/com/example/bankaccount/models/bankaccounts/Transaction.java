@@ -4,6 +4,8 @@ import com.example.bankaccount.models.allenums.Type;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+
 @Entity
 @Table(name = "transactions")
 public class Transaction {
@@ -106,4 +108,5 @@ public class Transaction {
     public void setBankAccount(BankAccount bankAccount) {
         this.bankAccount = bankAccount;
     }
+
 }

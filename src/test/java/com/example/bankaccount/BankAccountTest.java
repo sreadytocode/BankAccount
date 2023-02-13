@@ -5,13 +5,17 @@ import com.example.bankaccount.models.allenums.Type;
 import com.example.bankaccount.models.bankaccounts.BankAccount;
 import com.example.bankaccount.models.bankaccounts.Transaction;
 import com.example.bankaccount.models.customer.Customer;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 public class BankAccountTest {
@@ -26,8 +30,8 @@ public class BankAccountTest {
     @Before
     public void before(){
 
-        calantheTransaction = new Transaction("12/02/2023", 14.00, Type.INCOMING, "Calanthe", 50.0, "TOKEEPTHEPEACE", bankAccount);
-        baronTransaction = new Transaction("05/10/2023", 10.00, Type.INCOMING, "Bloody Baron", 50.0, "FAMILYMATTERS", bankAccount);
+        calantheTransaction = new Transaction("2023-02-05", 14.00, Type.INCOMING, "Calanthe", 50.0, "TOKEEPTHEPEACE", bankAccount);
+        baronTransaction = new Transaction("2023-02-12", 10.00, Type.INCOMING, "Bloody Baron", 50.0, "FAMILYMATTERS", bankAccount);
         List<Transaction> transactions = Arrays.asList(calantheTransaction, baronTransaction);
 
         bankAccount = new BankAccount(customer, 639268, "11-23-54", Card.VISA, 1000.0, transactions);
@@ -114,7 +118,18 @@ public class BankAccountTest {
 
     @Test
     public void doesBankAccountHaveTransactionByDate(){
-        assertEquals(calantheTransaction, bankAccount.findTransaction("12/02/2023"));
+        assertEquals(calantheTransaction, bankAccount.findTransactionByDate("12/02/2023"));
+    }
+
+    @Test
+    public void findTransactionsInBankAccountByDateRange(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String startDate ="01-02-2023";
+        LocalDate dateStart = LocalDate.parse(startDate, formatter);
+        String endDate = "13-02-2023";
+        LocalDate dateEnd = LocalDate.parse(endDate, formatter);
+        List<String> expected = Arrays.asList("2023-02-05", "2023-02-12");
+        assertEquals(expected, bankAccount.findTransactionsByDateRange(dateStart, dateEnd));
     }
 
 
