@@ -107,4 +107,8 @@ public class Customer {
     public void setBankAccounts(ArrayList<BankAccount> bankAccounts) {
         this.bankAccounts = bankAccounts;
     }
+
+    public int getBankAccountsCount(){
+        return this.bankAccounts.size();
+    }
 }
