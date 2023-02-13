@@ -4,6 +4,7 @@ import com.example.bankaccount.models.allenums.Card;
 import com.example.bankaccount.models.allenums.Type;
 import com.example.bankaccount.models.bankaccounts.BankAccount;
 import com.example.bankaccount.models.bankaccounts.Transaction;
+import com.example.bankaccount.models.customer.Customer;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,6 +17,8 @@ public class BankAccountTest {
 
     Transaction transaction;
 
+    Customer customer;
+
     @Before
     public void before(){
         ArrayList<Transaction> transactions = new ArrayList<>();
@@ -24,7 +27,7 @@ public class BankAccountTest {
         transactions.add(transaction);
         transactions.add(transaction1);
 
-        bankAccount = new BankAccount(639268, "11-23-54", Card.VISA, 1000.0, transactions);
+        bankAccount = new BankAccount(customer, 639268, "11-23-54", Card.VISA, 1000.0, transactions);
     }
 
     @Test
@@ -52,5 +55,9 @@ public class BankAccountTest {
         assertEquals(2, bankAccount.getTransactionsCount());
     }
 
+    @Test
+    public void doesBankAccountHaveACustomer(){
+        assertEquals(customer, bankAccount.getCustomer());
+    }
 
 }
