@@ -113,8 +113,9 @@ public class BankAccountTest {
     }
 
     @Test
-    public void doesBankAccountHaveTransactionByRecipientCalanthe(){
-        assertEquals(calantheTransaction, bankAccount.findTransaction("Calanthe"));
+    public void doesBankAccountHaveTransactionByDate(){
+        assertEquals(calantheTransaction, bankAccount.findTransaction("12/02/2023"));
     }
+
 
 }
