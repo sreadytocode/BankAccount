@@ -32,7 +32,7 @@ public class BankAccount implements IPay, IReceive {
 
     @JsonIgnoreProperties({"bankAccount"})
     @OneToMany(mappedBy = "bankAccount", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    private ArrayList<Transaction> transactions;
+    private List<Transaction> transactions;
 
     @JsonIgnoreProperties({"bankAccounts"})
     @ManyToOne
@@ -40,7 +40,7 @@ public class BankAccount implements IPay, IReceive {
     private Customer customer;
 
 
-    public BankAccount(Customer customer, Integer accountNumber, String sortCode, Card card, Double cash, ArrayList<Transaction> transactions) {
+    public BankAccount(Customer customer, Integer accountNumber, String sortCode, Card card, Double cash, List<Transaction> transactions) {
         this.customer = customer;
         this.accountNumber = accountNumber;
         this.sortCode = sortCode;
@@ -91,7 +91,7 @@ public class BankAccount implements IPay, IReceive {
         this.cash = cash;
     }
 
-    public ArrayList<Transaction> getTransactions() {
+    public List<Transaction> getTransactions() {
         return this.transactions;
     }
 
