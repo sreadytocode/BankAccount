@@ -73,4 +73,16 @@ public class BankAccountTest {
         assertEquals(990, bankAccount.getCash(), 0.0);
     }
 
+    @Test
+    public void doesNotAllowCustomerToPayIfTypeIsIncoming(){
+        ArrayList<Transaction> recentTransaction = new ArrayList<>();
+        Transaction transaction = new Transaction("12/02/2023", 14.00, Type.INCOMING, "Calanthe", 50.0, "TOKEEPTHEPEACE", bankAccount);
+        recentTransaction.add(transaction);
+
+        bankAccount = new BankAccount(customer, 639268, "11-23-54", Card.VISA, 1000.0, recentTransaction);
+        bankAccount.reduceCash(transaction);
+
+        assertEquals(1000.0, bankAccount.getCash(), 0.0);
+    }
+
 }
