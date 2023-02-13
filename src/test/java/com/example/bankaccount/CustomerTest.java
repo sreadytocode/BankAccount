@@ -69,4 +69,5 @@ public class CustomerTest {
         assertEquals(1, customer.getBankAccountsCount());
     }
 
+
 }

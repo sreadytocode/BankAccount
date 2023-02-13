@@ -1,6 +1,8 @@
 package com.example.bankaccount.models.bankaccounts;
 
 import com.example.bankaccount.models.allenums.Card;
+import com.example.bankaccount.models.allenums.Type;
+import com.example.bankaccount.models.behaviours.IPay;
 import com.example.bankaccount.models.customer.Customer;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
@@ -10,7 +12,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "bank")
-public class BankAccount {
+public class BankAccount implements IPay {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -107,4 +109,13 @@ public class BankAccount {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
+
+    public double reduceCash(Transaction transaction) {
+        double total = 0;
+        if (transaction.getType() == Type.OUTGOING) {
+            total = this.cash -= transaction.getAmount();
+        }
+        return total;
+    }
+
 }
