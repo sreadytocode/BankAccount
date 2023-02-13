@@ -28,11 +28,11 @@ public class CustomerTest {
         transactions.add(transaction);
         transactions.add(transaction1);
 
-        ArrayList<BankAccount> bankaccounts = new ArrayList<>();
-        BankAccount bankAccount1 = new BankAccount(639268, "11-23-54", Card.VISA, 1000.0, transactions);
-        bankaccounts.add(bankAccount1);
+        ArrayList<BankAccount> bankAccounts = new ArrayList<>();
+        BankAccount bankAccount1 = new BankAccount(customer, 639268, "11-23-54", Card.VISA, 1000.0, transactions);
+        bankAccounts.add(bankAccount1);
 
-        customer = new Customer(Title.MR, "Geralt", "Rivia", 36, "Kaer Morhen", 100.00, bankaccounts);
+        customer = new Customer(Title.MR, "Geralt", "Rivia", 36, "Kaer Morhen", 100.00, bankAccounts);
     }
     @Test
     public void doesCustomerHaveATitle(){
@@ -66,7 +66,7 @@ public class CustomerTest {
 
     @Test
     public void doesCustomerHaveBankAccounts(){
-        assertEquals(bankAccounts, customer.getBankAccounts());
+        assertEquals(1, customer.getBankAccountsCount());
     }
 
 }

@@ -1,6 +1,7 @@
 package com.example.bankaccount.models.bankaccounts;
 
 import com.example.bankaccount.models.allenums.Card;
+import com.example.bankaccount.models.customer.Customer;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
@@ -30,8 +31,14 @@ public class BankAccount {
     @OneToMany(mappedBy = "bankAccount", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private ArrayList<Transaction> transactions;
 
+    @JsonIgnoreProperties({"bankAccounts"})
+    @ManyToOne
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customer;
 
-    public BankAccount(Integer accountNumber, String sortCode, Card card, Double cash, ArrayList<Transaction> transactions) {
+
+    public BankAccount(Customer customer, Integer accountNumber, String sortCode, Card card, Double cash, ArrayList<Transaction> transactions) {
+        this.customer = customer;
         this.accountNumber = accountNumber;
         this.sortCode = sortCode;
         this.card = card;
@@ -91,5 +98,13 @@ public class BankAccount {
 
     public int getTransactionsCount(){
         return this.transactions.size();
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }
