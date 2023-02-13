@@ -97,6 +97,16 @@ public class BankAccountTest {
         assertEquals(1050.0, bankAccount.getCash(), 0.0);
     }
 
+    @Test
+    public void doesNotAddToBankAccountCashIfPaymentOutgoing(){
+        ArrayList<Transaction> newTransactions = new ArrayList<>();
+        Transaction merchant = new Transaction("12/02/2023", 10.00, Type.OUTGOING, "Merchant", 10.0, "NEWSHOES", bankAccount);
+        newTransactions.add(merchant);
 
+        bankAccount = new BankAccount(customer, 639268, "11-23-54", Card.VISA, 1000.0, newTransactions);
+        bankAccount.receivePayment(merchant);
+
+        assertEquals(1000.0, bankAccount.getCash(), 0.0);
+    }
 
 }
