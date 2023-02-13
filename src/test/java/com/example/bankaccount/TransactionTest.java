@@ -49,4 +49,9 @@ public class TransactionTest {
     public void TransactionHasReference(){
         assertEquals("TOKEEPTHEPEACE", transaction.getReference());
     }
+
+    @Test
+    public void TransactionHasBankAccountAttached(){
+        assertEquals(bankAccount, transaction.getBankAccount());
+    }
 }
