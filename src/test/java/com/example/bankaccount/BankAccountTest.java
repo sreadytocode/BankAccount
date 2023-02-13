@@ -85,4 +85,16 @@ public class BankAccountTest {
         assertEquals(1000.0, bankAccount.getCash(), 0.0);
     }
 
+    @Test
+    public void doesBankAccountAddToCashIfPaymentIncoming(){
+        ArrayList<Transaction> recentTransaction = new ArrayList<>();
+        Transaction baronTransaction = new Transaction("05/10/2023", 10.00, Type.INCOMING, "Bloody Baron", 50.0, "FAMILYMATTERS", bankAccount);
+        recentTransaction.add(baronTransaction);
+
+        bankAccount = new BankAccount(customer, 639268, "11-23-54", Card.VISA, 1000.0, recentTransaction);
+        bankAccount.receivePayment(baronTransaction);
+
+        assertEquals(1050.0, bankAccount.getCash(), 0.0);
+    }
+
 }
