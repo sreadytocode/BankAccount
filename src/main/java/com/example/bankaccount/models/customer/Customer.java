@@ -1,7 +1,11 @@
 package com.example.bankaccount.models.customer;
 
 import com.example.bankaccount.models.allenums.Title;
+import com.example.bankaccount.models.bankaccounts.BankAccount;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
 
 @Entity
 @Table(name = "customers")
@@ -24,13 +28,18 @@ public class Customer {
     @Column
     private double monthlyWage;
 
-    public Customer(Title title, String firstName, String lastName, int age, String address, double monthlyWage) {
+    @JsonIgnoreProperties({"customer"})
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    private ArrayList<BankAccount> bankAccounts;
+
+    public Customer(Title title, String firstName, String lastName, int age, String address, double monthlyWage, ArrayList<BankAccount> bankAccounts) {
         this.title = title;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.address = address;
         this.monthlyWage = monthlyWage;
+        this.bankAccounts = bankAccounts;
     }
 
     public Customer() {}
@@ -89,5 +98,13 @@ public class Customer {
 
     public void setMonthlyWage(double monthlyWage) {
         this.monthlyWage = monthlyWage;
+    }
+
+    public ArrayList<BankAccount> getBankAccounts() {
+        return bankAccounts;
+    }
+
+    public void setBankAccounts(ArrayList<BankAccount> bankAccounts) {
+        this.bankAccounts = bankAccounts;
     }
 }
