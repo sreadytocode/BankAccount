@@ -14,13 +14,15 @@ import static org.junit.Assert.assertEquals;
 public class BankAccountTest {
     BankAccount bankAccount;
 
+    Transaction transaction;
+
     @Before
     public void before(){
-        Transaction transaction1 = new Transaction("12/02/2023", 14.00, Type.INCOMING, "Calanthe", 50.0, "TOKEEPTHEPEACE");
-        Transaction transaction2 = new Transaction("05/10/2023", 10.00, Type.INCOMING, "Bloody Baron", 50.0, "FAMILYMATTERS");
         ArrayList<Transaction> transactions = new ArrayList<>();
+        Transaction transaction = new Transaction("12/02/2023", 14.00, Type.INCOMING, "Calanthe", 50.0, "TOKEEPTHEPEACE", bankAccount);
+        Transaction transaction1 = new Transaction("05/10/2023", 10.00, Type.INCOMING, "Bloody Baron", 50.0, "FAMILYMATTERS", bankAccount);
+        transactions.add(transaction);
         transactions.add(transaction1);
-        transactions.add(transaction2);
 
         bankAccount = new BankAccount(639268, "11-23-54", Card.VISA, 1000.0, transactions);
     }
@@ -46,8 +48,8 @@ public class BankAccountTest {
     }
 
     @Test
-    public void doesBankAccountHaveTransactions(){
-        assertEquals(2, bankAccount.getTransactionCount());
+    public void doesBankAccountHaveMoreThanOneTransaction(){
+        assertEquals(2, bankAccount.getTransactionsCount());
     }
 
 

@@ -1,6 +1,7 @@
 package com.example.bankaccount.models.bankaccounts;
 
 import com.example.bankaccount.models.allenums.Type;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 @Entity
@@ -27,13 +28,19 @@ public class Transaction {
     @Column
     private String reference;
 
-    public Transaction(String date, Double time, Type type, String recipient, Double amount, String reference) {
+    @JsonIgnoreProperties({"transactions"})
+    @ManyToOne
+    @JoinColumn(name = "bankAccount_id", nullable = false)
+    private BankAccount bankAccount;
+
+    public Transaction(String date, Double time, Type type, String recipient, Double amount, String reference, BankAccount bankAccount) {
         this.date = date;
         this.time = time;
         this.type = type;
         this.recipient = recipient;
         this.amount = amount;
         this.reference = reference;
+        this.bankAccount = bankAccount;
     }
 
     public Long getId() {
@@ -90,5 +97,13 @@ public class Transaction {
 
     public void setReference(String reference) {
         this.reference = reference;
+    }
+
+    public BankAccount getBankAccount() {
+        return bankAccount;
+    }
+
+    public void setBankAccount(BankAccount bankAccount) {
+        this.bankAccount = bankAccount;
     }
 }
