@@ -17,15 +17,17 @@ import static org.junit.Assert.assertEquals;
 public class BankAccountTest {
     BankAccount bankAccount;
 
-    Transaction transaction;
+    Transaction calantheTransaction;
+
+    Transaction baronTransaction;
 
     Customer customer;
 
     @Before
     public void before(){
 
-        Transaction calantheTransaction = new Transaction("12/02/2023", 14.00, Type.INCOMING, "Calanthe", 50.0, "TOKEEPTHEPEACE", bankAccount);
-        Transaction baronTransaction = new Transaction("05/10/2023", 10.00, Type.INCOMING, "Bloody Baron", 50.0, "FAMILYMATTERS", bankAccount);
+        calantheTransaction = new Transaction("12/02/2023", 14.00, Type.INCOMING, "Calanthe", 50.0, "TOKEEPTHEPEACE", bankAccount);
+        baronTransaction = new Transaction("05/10/2023", 10.00, Type.INCOMING, "Bloody Baron", 50.0, "FAMILYMATTERS", bankAccount);
         List<Transaction> transactions = Arrays.asList(calantheTransaction, baronTransaction);
 
         bankAccount = new BankAccount(customer, 639268, "11-23-54", Card.VISA, 1000.0, transactions);
@@ -108,6 +110,11 @@ public class BankAccountTest {
         bankAccount.receivePayment(merchant);
 
         assertEquals(1000.0, bankAccount.getCash(), 0.0);
+    }
+
+    @Test
+    public void doesBankAccountHaveTransactionByRecipientCalanthe(){
+        assertEquals(calantheTransaction, bankAccount.findTransaction("Calanthe"));
     }
 
 }
