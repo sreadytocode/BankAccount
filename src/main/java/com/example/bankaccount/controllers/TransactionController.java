@@ -30,4 +30,17 @@ public class TransactionController {
         transactionRepository.save(transaction);
         return new ResponseEntity<>(transaction, HttpStatus.CREATED);
     }
+
+    @PutMapping(value = "/transactions/{id}")
+    public ResponseEntity<Transaction> putTransaction(@RequestBody Transaction transaction, @PathVariable Long id){
+        Transaction transactionToUpdate = transactionRepository.findById(id).get();
+        transactionToUpdate.setDate(transaction.getDate());
+        transactionToUpdate.setTime(transaction.getTime());
+        transactionToUpdate.setType(transaction.getType());
+        transactionToUpdate.setRecipient(transaction.getRecipient());
+        transactionToUpdate.setAmount(transaction.getAmount());
+        transactionToUpdate.setReference(transaction.getReference());
+        transactionToUpdate.setBankAccount(transaction.getBankAccount());
+        return new ResponseEntity<>(transactionToUpdate, HttpStatus.OK);
+    }
 }
