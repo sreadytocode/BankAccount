@@ -43,4 +43,10 @@ public class TransactionController {
         transactionToUpdate.setBankAccount(transaction.getBankAccount());
         return new ResponseEntity<>(transactionToUpdate, HttpStatus.OK);
     }
+
+    @DeleteMapping(value = "/transactions/{id}")
+    public ResponseEntity<Long> deleteTransaction(@PathVariable Long id){
+        transactionRepository.deleteById(id);
+        return new ResponseEntity<>(id, HttpStatus.OK);
+    }
 }

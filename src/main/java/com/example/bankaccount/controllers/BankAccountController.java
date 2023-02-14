@@ -44,7 +44,7 @@ public class BankAccountController {
     }
 
     @DeleteMapping(value = "/bankAccounts/{id}")
-    public ResponseEntity<Long> deleteBankAccounts(@PathVariable Long id){
+    public ResponseEntity<Long> deleteBankAccount(@PathVariable Long id){
         bankAccountRepository.deleteById(id);
         return new ResponseEntity<>(id, HttpStatus.OK);
     }
