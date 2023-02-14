@@ -1,6 +1,6 @@
 package com.example.bankaccount.repositories;
 
-import org.hibernate.Transaction;
+import com.example.bankaccount.models.bankaccounts.Transaction;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
