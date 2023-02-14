@@ -124,9 +124,9 @@ public class BankAccountTest {
     @Test
     public void findTransactionsInBankAccountByDateRange(){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        String startDate ="01-02-2023";
+        String startDate ="01-01-2023";
         LocalDate dateStart = LocalDate.parse(startDate, formatter);
-        String endDate = "13-02-2023";
+        String endDate = "13-03-2023";
         LocalDate dateEnd = LocalDate.parse(endDate, formatter);
         List<String> expected = Arrays.asList("2023-02-05", "2023-02-12");
         assertEquals(expected, bankAccount.findTransactionsByDateRange(dateStart, dateEnd));
