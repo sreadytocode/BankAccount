@@ -99,7 +99,7 @@ public class BankAccount implements IPay, IReceive {
         return this.transactions;
     }
 
-    public void setTransactions(ArrayList<Transaction> transactions) {
+    public void setTransactions(List<Transaction> transactions) {
         this.transactions = transactions;
     }
 
