@@ -20,7 +20,7 @@ public class BankAccountController {
         return new ResponseEntity<>(bankAccountRepository.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/bankAccounts/{id")
+    @GetMapping(value = "/bankAccounts/{id}")
     public ResponseEntity getBankAccount(@PathVariable Long id) {
         return new ResponseEntity<>(bankAccountRepository.findById(id), HttpStatus.OK);
     }

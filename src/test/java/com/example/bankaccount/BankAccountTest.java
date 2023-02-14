@@ -69,9 +69,9 @@ public class BankAccountTest {
 
     @Test
     public void doesBankAccountAllowCustomerToPay(){
-        ArrayList<Transaction> newTransactions = new ArrayList<>();
+
         Transaction merchant = new Transaction("12/02/2023", 10.00, Type.OUTGOING, "Merchant", 10.0, "NEWSHOES", bankAccount);
-        newTransactions.add(merchant);
+        List<Transaction> newTransactions = Arrays.asList(merchant);
 
         bankAccount = new BankAccount(customer, 639268, "11-23-54", Card.VISA, 1000.0, newTransactions);
 
@@ -82,9 +82,9 @@ public class BankAccountTest {
 
     @Test
     public void doesNotAllowCustomerToPayIfTypeIsIncoming(){
-        ArrayList<Transaction> recentTransaction = new ArrayList<>();
+
         Transaction transaction = new Transaction("12/02/2023", 14.00, Type.INCOMING, "Calanthe", 50.0, "TOKEEPTHEPEACE", bankAccount);
-        recentTransaction.add(transaction);
+        List<Transaction> recentTransaction = Arrays.asList(transaction);
 
         bankAccount = new BankAccount(customer, 639268, "11-23-54", Card.VISA, 1000.0, recentTransaction);
         bankAccount.reduceCash(transaction);
@@ -94,9 +94,9 @@ public class BankAccountTest {
 
     @Test
     public void doesBankAccountAddToCashIfPaymentIncoming(){
-        ArrayList<Transaction> recentTransaction = new ArrayList<>();
+
         Transaction baronTransaction = new Transaction("05/10/2023", 10.00, Type.INCOMING, "Bloody Baron", 50.0, "FAMILYMATTERS", bankAccount);
-        recentTransaction.add(baronTransaction);
+        List<Transaction> recentTransaction = Arrays.asList(baronTransaction);
 
         bankAccount = new BankAccount(customer, 639268, "11-23-54", Card.VISA, 1000.0, recentTransaction);
         bankAccount.receivePayment(baronTransaction);
@@ -106,9 +106,9 @@ public class BankAccountTest {
 
     @Test
     public void doesNotAddToBankAccountCashIfPaymentOutgoing(){
-        ArrayList<Transaction> newTransactions = new ArrayList<>();
+
         Transaction merchant = new Transaction("12/02/2023", 10.00, Type.OUTGOING, "Merchant", 10.0, "NEWSHOES", bankAccount);
-        newTransactions.add(merchant);
+        List<Transaction> newTransactions = Arrays.asList(merchant);
 
         bankAccount = new BankAccount(customer, 639268, "11-23-54", Card.VISA, 1000.0, newTransactions);
         bankAccount.receivePayment(merchant);
@@ -118,7 +118,7 @@ public class BankAccountTest {
 
     @Test
     public void doesBankAccountHaveTransactionByDate(){
-        assertEquals(calantheTransaction, bankAccount.findTransactionByDate("12/02/2023"));
+        assertEquals(calantheTransaction, bankAccount.findTransactionByDate("2023-02-05"));
     }
 
     @Test
